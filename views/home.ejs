@@ -1,0 +1,128 @@
+<%- include('partials/header') %>
+<h5><b>Data List</b></h5>
+<table class="table"> 
+    <thead class="thead-dark">
+        <tr>
+            <th>ID</th>
+            <th>String</th>
+            <th>Integer</th>
+            <th>Float</th>
+            <th>Date</th>
+            <th>Boolean</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% data.forEach((item, index) => { %>
+        <tr>
+            <td><%= item.id %></td>
+            <td><%= item.string%></td>
+            <td><%= item.integer%></td>
+            <td><%= item.float%></td>
+            <td><%= item.date%></td>
+            <td><%= item.boolean%></td>
+            <td>
+                <a href="/edit/<%= item.id %>" class="btn btn-dark">Edit</a>
+                <a href="/delete/<%= item.id %>" class="btn btn-danger" onclick="return confirm('Delete this?')">Delete</a>
+            </td>
+        </tr>
+        <% }) %>
+    </tbody>
+</table>
+
+<nav aria-label="Page navigation">
+    <ul class="pagination">
+        <li class="page-item<%= page == 1 ? ' disabled' : '' %>">
+            <a class="page-link" href="<%= url.replace(`page=${page}`, `page=${page - 1}`) %>" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+            </a>
+        </li>
+        <% for(let i = 1; i <= pages; i++){ %>
+        <li class="page-item<%= page == i ? ' active' : '' %>"><a class="page-link"
+                href="<%= url.replace(`page=${page}`, `page=${i}`) %>"><%= i %></a></li>
+        <% } %>
+        <li class="page-item<%= page == pages ? ' disabled' : ''%>">
+            <a class="page-link" href="<%= url.replace(`page=${page}`, `page=${Number(page) + 1}`) %>"
+                aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+            </a>
+        </li>
+    </ul>
+</nav>
+<a href="/add" class="btn btn-dark">Add</a>
+<br>
+<br>
+<h5><b>Search Form</b></h5>
+<form action="" method="GET">
+    <input type="hidden" name="page" value="1">
+    <div class="form-group row">
+        <div class="form-check col-sm-3 ">
+            <input type="checkbox" name="cstring" value="true" <%= item.cstring ? ' checked' : '' %> />
+            <label for="string" class="col-form-label">String</label>
+        </div>
+        <div class="col-sm-9">
+            <input type="text" class="form-control" id="string" name="string" value="<%= item.string %>">
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <div class="form-check col-sm-3">
+            <input type="checkbox" name="cinteger" value="true" <%= item.cinteger ? ' checked' : '' %> />
+            <label for="integer" class="col-form-label">Integer</label>
+        </div>
+        <div class="col-sm-9">
+            <input type="number" class="form-control" id="integer" name="integer" value="<%= item.integer %>">
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="form-check col-sm-3">
+            <input type="checkbox" name="cfloat" value="true" <%= item.cfloat ? ' checked' : '' %> />
+            <label for="float" class="col-form-label">Float</label>
+        </div>
+        <div class="col-sm-9">
+            <input type="float" class="form-control" id="float" name="float" value="<%= item.float %>">
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <div class="form-check col-sm-3">
+            <input type="checkbox" name="cdate" value="true" <%= item.cdate ? ' checked' : '' %> />
+            <label for="date" class="col-form-label">Date</label>
+        </div>
+        <div class="col-sm-9">
+            <input type="date" class="form-control" id="date" name="date" value="<%= item.date %>">
+        </div>
+    </div>
+
+    <fieldset class="form-group">
+        <div class="row">
+            <div class="form-check col-sm-3">
+                <input type="checkbox" name="cboolean" value="true" <%= item.cboolean ? ' checked' : '' %> />
+                <label class="col-form-label">Boolean</label>
+            </div>
+            <div class="col-sm-9">
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="boolean" id="boolean1" value="true"
+                        <%= item.boolean == 'true' ? ' checked' : '' %>>
+                    <label class="form-check-label" for="boolean1">
+                        True
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="boolean" id="boolean2" value="false"
+                        <%= item.boolean != 'true' ? ' checked' : '' %>>
+                    <label class="form-check-label" for="boolean2">
+                        False
+                    </label>
+                </div>
+            </div>
+        </div>
+    </fieldset>
+    <div class="form-group row">
+        <div class="col-sm-9">
+            <button type="submit" class="btn btn-dark">Search</button>
+            <a href="/" class="btn btn-dark">Reset Form</a>
+        </div>
+    </div>
+</form>
+<%- include('partials/footer') %>

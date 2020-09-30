@@ -1,0 +1,41 @@
+header {
+    background-color: black; color:white; text-align:center; font-family:Arial;
+}
+h3 { 
+    color:white; text-align:center; font-family:Arial;
+}
+h6 {
+    color:white; text-align:center; font-family:Arial;
+}
+
+h5 {
+    color:white; text-align:left; font-family:Arial;
+}
+
+body {
+    background-color:gray;
+}
+
+th {
+    color:white;
+}
+
+td {
+    color:white;
+}
+
+ul {
+    background-color: gray; color: white;
+}
+
+label {
+    color:white
+}
+
+hr {
+    background-color:white
+}
+
+footer {
+    color:white; text-align:center; font-family:Arial
+}

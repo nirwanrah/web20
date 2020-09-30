@@ -1,0 +1,61 @@
+<%- include('partials/header') %>
+<h5><b>Masukkan data ke dalam form di bawah ini:</b></h5>
+<form action="" method="post">
+
+    <div class="form-group row">
+        <label for="string" class="col-sm-2 col-form-label">String</label>
+        <div class="col-sm">
+            <input type="text" class="form-control" id="string" name="string" placeholder="string">
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label for="integer" class="col-sm-2 col-form-label">Integer</label>
+        <div class="col-sm">
+            <input type="number" class="form-control" id="integer" name="integer" placeholder="integer">
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label for="float" class="col-sm-2 col-form-label">Float</label>
+        <div class="col-sm">
+            <input type="float" class="form-control" id="float" name="float" placeholder="float">
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label for="date" class="col-sm-2 col-form-label">Date</label>
+        <div class="col-sm">
+            <input type="date" class="form-control" id="date" name="date" placeholder="date">
+        </div>
+    </div>
+
+    <fieldset class="form-group">
+        <div class="row">
+            <div class="form-check col-sm-2">
+                <label class="col-form-label">Boolean</label>
+            </div>
+            <div class="col-sm-9"> 
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="boolean" id="boolean1" value="true"
+                        <%= item.boolean == 'true' ? ' checked' : '' %>>
+                    <label class="form-check-label" for="boolean1">
+                        True
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="boolean" id="boolean2" value="false"
+                        <%= item.boolean != 'true' ? ' checked' : '' %>>
+                    <label class="form-check-label" for="boolean2">
+                        False
+                    </label>
+                </div>
+            </div>
+        </div>
+    </fieldset>
+
+    <button type="Submit" class="btn btn-dark">Save</button>
+
+</form>
+<br>
+<%- include('partials/footer') %>
